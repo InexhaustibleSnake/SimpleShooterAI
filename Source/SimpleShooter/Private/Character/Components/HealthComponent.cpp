@@ -20,6 +20,8 @@ void UHealthComponent::BeginPlay()
 
 void UHealthComponent::OnTakeAnyDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* InstigatedBy, AActor* DamageCauser)
 {
+	if (GodMode) return;
+
 	SetHealth(Health - Damage);
 
 	if (IsDead())
