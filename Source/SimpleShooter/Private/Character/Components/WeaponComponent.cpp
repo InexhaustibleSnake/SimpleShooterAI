@@ -170,15 +170,6 @@ void UWeaponComponent::OnReloadFinished(USkeletalMeshComponent* MeshComponent)
 	SetAmmoBullets(CurrentAmmo.Bullets = DefaultAmmo.Bullets);
 }
 
-FTransform UWeaponComponent::GetMuzzleWorldTransform() const
-{
-	if (!GetOwner()) return FTransform(FRotator::ZeroRotator, FVector::ZeroVector, FVector::ZeroVector);
-
-	const auto CharacterMesh = GetOwner()->GetComponentByClass<USkeletalMeshComponent>();
-
-	return CharacterMesh ? CharacterMesh->GetSocketTransform(MuzzleSocketName) : FTransform(FRotator::ZeroRotator, FVector::ZeroVector, FVector::ZeroVector);
-}
-
 AController* UWeaponComponent::GetOwnerController() const
 {
 	if (!GetOwner()) return false;
